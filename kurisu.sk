@@ -14,6 +14,13 @@ on script load:
   # Commands
   set {kurisu::commands::play} to {Pattern}.compile("p(lay)?")
   set {kurisu::commands::say} to {Pattern}.compile("(say|reply)")
+  set {kurisu::commands::play} to {Pattern}.compile("p(lay)?")
+  set {kurisu::commands::stop} to {Pattern}.compile("(?:music )stop")
+  set {kurisu::commands::skip} to {Pattern}.compile("(?:music )skip")
+  set {kurisu::commands::volume} to {Pattern}.compile("(?:music )vol[ume]")
+  set {kurisu::commands::pause} to {Pattern}.compile("(?:music )pause")
+  set {kurisu::commands::start} to {Pattern}.compile("(?:music )start")
+  set {kurisu::commands::repeat} to {Pattern}.compile("(?:music )repeat")
   loadCommands()
 
   if bot "Kurisu" is logged in:
