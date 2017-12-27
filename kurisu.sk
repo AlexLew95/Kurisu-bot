@@ -14,7 +14,6 @@ on script load:
   # Commands
   set {kurisu::commands::play} to {Pattern}.compile("p(lay)?")
   set {kurisu::commands::say} to {Pattern}.compile("(say|reply)")
-  set {kurisu::commands::play} to {Pattern}.compile("p(lay)?")
   set {kurisu::commands::stop} to {Pattern}.compile("(?:music )stop")
   set {kurisu::commands::skip} to {Pattern}.compile("(?:music )skip")
   set {kurisu::commands::volume} to {Pattern}.compile("(?:music )vol[ume]")
