@@ -1,0 +1,10 @@
+#cmd-repeat.sk
+
+evt "kurisu repeat":
+
+	set {_times} to first element out of custom event's args
+	set {_link} to second element out of custom event's args
+	loop ({_times} parsed as integer) times:
+		join voice channel "%voice channel of event-user%" with "Kurisu"
+		play audio {_link} with player "Kurisu" in guild event-guild
+	replyWith("**Repeat music %{_times}% times** : %{_link}%")
