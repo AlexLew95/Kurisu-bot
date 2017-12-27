@@ -1,0 +1,9 @@
+#cmd-start.sk
+
+evt "kurisu start":
+
+	if bot "Kurisu" is playing audio in guild event-guild:
+		set player "Kurisu" in guild event-guild paused state to false
+		reply with "**Music restarted !**"
+	else:
+		reply with "I play already a music, why restart the music ? >.<"
