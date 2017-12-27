@@ -14,6 +14,13 @@ An example discord bot made with Skript and Vixio.
 Command | Aliases | Description 
 ------------ | ------------- | -------------
 say | reply | Makes Kurisu reply with the specified message
+play | p | Makes Kurisu join the voice channel and play music.
+stop | stop | Makes Kurisu stop the music and leave the voice channel.
+skip | skip | Makes Kurisu skip the current music.
+volume | vol | Makes Kurisu turn up and lower volume of the music and Kurisu.
+pause | pause | Makes Kurisu turn to pause the music.
+start | start | Makes Kurisu turn to start the music.
+repeat | repeat | Makes Kurisu repeat a music.
 
 ## Current plans
 
