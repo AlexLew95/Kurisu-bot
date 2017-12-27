@@ -1,0 +1,9 @@
+#cmd-pause.sk
+
+evt "kurisu pause":
+
+	if bot "Kurisu" is playing audio in guild event-guild:
+		set player "Kurisu" in guild event-guild paused state to true
+		replyWith("**Music stopped !**")
+	else:
+		replyWith("I don't play anything music, why stop the music ? >.<")
