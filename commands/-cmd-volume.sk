@@ -1,0 +1,9 @@
+#cmd-volume.sk
+
+evt "kurisu volume":
+
+	set {_volume} to first element out of custom event's args
+	if {_volume} > 100:
+		set {_volume} to 100
+	set player "Kurisu" in guild event-guild volume to ({_volume} parsed as number)
+	replyWith("**Volume actually** : %{_volume}%")
