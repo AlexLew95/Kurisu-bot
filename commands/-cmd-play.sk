@@ -1,0 +1,14 @@
+#cmd-play.sk
+
+evt "kurisu play":
+
+	set {_track} to first element out of custom event's args
+	if {_track} is set:
+		join voice channel "%voice channel of event-user%" with "Kurisu"
+		play audio {_track} with player "Kurisu" in guild event-guild
+		set {_track} to track player "Kurisu" is playing in guild event-guild
+		set game of bot "Kurisu" to "%title of track {_track}% - %author of track {_track}%"
+		if bot "Kurisu" is playing audio in guild event-guild:
+			replyWith("**Your music has been added in the queue : %{_track}%**")
+		else:	
+			replyWith("**Play %{_track}%**")
