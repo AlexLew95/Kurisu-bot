@@ -1,0 +1,6 @@
+#cmd-stop.sk
+
+evt "kurisu stop":
+
+	leave voice channel "%voice channel of event-user%" with "Kurisu"
+	replyWith("**Deconnexion**")
