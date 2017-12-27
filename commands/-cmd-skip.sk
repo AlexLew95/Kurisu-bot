@@ -1,0 +1,6 @@
+#cmd-skip.sk
+
+evt "kurisu skip":
+
+	skip current track player "Kurisu" is playing in guild event-guild
+	replyWith("**Music skipped**")
