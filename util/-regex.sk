@@ -1,58 +1,57 @@
-on script load:
-  
-  import "java.util.regex.Pattern"
-  import "java.util.regex.Matcher"
+import:
+	java.util.regex.Pattern
+	java.util.regex.Matcher
 
 
 effect register [a] [new] pattern [with id %-string%] using [[the] (regex| regular expression)] %string%:
-  
-  if expression-1 is set:
-    set {_id} to expression-1
-  else:
-    set {_id} to size of {kurisu-bot::regex::pattern::*} + 1
+	trigger:
+		if expression-1 is set:
+			set {_id} to expression-1
+		else:
+			set {_id} to size of {kurisu-bot::regex::pattern::*} + 1
 
-  replace all "." with "::" in {_id}
-  set {kurisu-bot::regex::pattern::%{_id}%} to {Pattern}.compile(expression-2)
+		replace all "." with "::" in {_id}
+		set {kurisu-bot::regex::pattern::%{_id}%} to {Pattern}.compile(expression-2)
 
 
-get expression pattern[s] [with id[s]] %strings%:
-  
-  loop expressions-1:
+plural expression pattern[s] [with id[s]] %strings%:
+	get: 
+		loop expressions-1:
 
-    set {_id} to loop-value
-    replace all "." with "::" in {_id}
-    add {kurisu-bot::regex::pattern::%{_id}%} to {_output::*}
+			set {_id} to loop-value
+			replace all "." with "::" in {_id}
+			add {kurisu-bot::regex::pattern::%{_id}%} to {_output::*}
 
-  return {_output::*}
+		return {_output::*}
 
 
 condition %string% matching %_pattern%:
-  
-  set {kurisu-bot::regex::last-match} to expression-2.matcher(expression-1)
+	check:
+		set {kurisu-bot::regex::last-match} to expression-2.matcher(expression-1)
 
-  if {kurisu-bot::regex::last-match}.matches():
-    return
-  else:
-    parser mark is 1
-    return
-
-
-get expression [the] last [(regex|regular expression)] match[ing]:
-  
-  return {kurisu-bot::regex::last-match}
+		if {kurisu-bot::regex::last-match}.matches():
+			continue
+		else:
+			parser mark is 1
+			continue
 
 
-get expression [(regex|regular expression)] group[s] [%-numbers/strings%] (from|of) [the] [matcher] %_matcher%:
+expression [the] last [(regex|regular expression)] match[ing]:
+	get:
+		return {kurisu-bot::regex::last-match}
 
-  set {_matcher} to expression-2 as {Matcher}  
-  if expressions-1 is set:
 
-    loop expressions-1:
-      add {_matcher}.group(loop-value) to {_output::*}
+plural expression [(regex|regular expression)] group[s] [%-numbers/strings%] (from|of) [the] [matcher] %_matcher%:
+	get:
+		set {_matcher} to expression-2 as {Matcher}
+		if expressions-1 is set:
 
-  else:
+			loop expressions-1:
+				add {_matcher}.group(loop-value) to {_output::*}
 
-    loop expression-2.groupCount() times:
-      add {_matcher}.group(loop-value) to {_output::*}
+		else:
 
-  return {_output::*}
+			loop expression-2.groupCount() times:
+				add {_matcher}.group(loop-value) to {_output::*}
+
+		return {_output::*}
